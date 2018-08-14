@@ -13,6 +13,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+/**
+ * WBS 
+ * @author socoolheeya
+ * @since 2018.08.14
+ */
 @Entity
 @Table(name = "t_wbs")
 public class Wbs {
@@ -73,4 +78,132 @@ public class Wbs {
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "wbs_id")
 	private OutputFile outputfiles;
+
+	public Long getWbsid() {
+		return wbsid;
+	}
+
+	public void setWbsid(Long wbsid) {
+		this.wbsid = wbsid;
+	}
+
+	public String getWbsName() {
+		return wbsName;
+	}
+
+	public void setWbsName(String wbsName) {
+		this.wbsName = wbsName;
+	}
+
+	public Long getUpperId() {
+		return upperId;
+	}
+
+	public void setUpperId(Long upperId) {
+		this.upperId = upperId;
+	}
+
+	public String getDivision() {
+		return division;
+	}
+
+	public void setDivision(String division) {
+		this.division = division;
+	}
+
+	public String getOutput() {
+		return output;
+	}
+
+	public void setOutput(String output) {
+		this.output = output;
+	}
+
+	public Date getPlanStartDate() {
+		return planStartDate;
+	}
+
+	public void setPlanStartDate(Date planStartDate) {
+		this.planStartDate = planStartDate;
+	}
+
+	public Date getPlanEndDate() {
+		return planEndDate;
+	}
+
+	public void setPlanEndDate(Date planEndDate) {
+		this.planEndDate = planEndDate;
+	}
+
+	public Date getPerformStartDate() {
+		return performStartDate;
+	}
+
+	public void setPerformStartDate(Date performStartDate) {
+		this.performStartDate = performStartDate;
+	}
+
+	public Date getPerformEndDate() {
+		return performEndDate;
+	}
+
+	public void setPerformEndDate(Date performEndDate) {
+		this.performEndDate = performEndDate;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public LocalDateTime getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(LocalDateTime createDate) {
+		this.createDate = createDate;
+	}
+
+	public String getCreater() {
+		return creater;
+	}
+
+	public void setCreater(String creater) {
+		this.creater = creater;
+	}
+
+	public LocalDateTime getUpdateDate() {
+		return updateDate;
+	}
+
+	public void setUpdateDate(LocalDateTime updateDate) {
+		this.updateDate = updateDate;
+	}
+
+	public String getUpdater() {
+		return updater;
+	}
+
+	public void setUpdater(String updater) {
+		this.updater = updater;
+	}
+
+	public String getDelyn() {
+		return delyn;
+	}
+
+	public void setDelyn(String delyn) {
+		this.delyn = delyn;
+	}
+
+	public OutputFile getOutputfiles() {
+		return outputfiles;
+	}
+
+	public void setOutputfiles(OutputFile outputfiles) {
+		this.outputfiles = outputfiles;
+	}
 }

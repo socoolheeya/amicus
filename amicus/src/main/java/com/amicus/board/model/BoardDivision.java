@@ -1,39 +1,37 @@
-package com.amicus.range.model;
+package com.amicus.board.model;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
- * 액션아이템
+ * 게시판구분
  * @author socoolheeya
- * @since 2018.08.13
+ * @since 2018.08.14
  */
 @Entity
-@Table(name = "t_actionitem")
-public class ActionItem {
-	
+@Table(name = "t_board_division")
+public class BoardDivision {
+
 	@Id
 	@GeneratedValue
-	private Long id;
-	
+	@Column(name = "division_id")
+	private int divisionId;
+
+	@Column(length = 200)
 	private String name;
-	
-	private String content;
-	
-	@Column(name = "startdt")
-	private Date startDate;
-	
-	@Column(name = "enddt")
-	private Date endDate;
-	
-	private String state;
-	
+
+	@Column(name = "use_yn", length = 1)
+	private String useYn;
+
 	@Column(name = "createdt")
 	private LocalDateTime createDate;
 
@@ -46,12 +44,16 @@ public class ActionItem {
 	@Column(length = 50)
 	private String updater;
 
-	public Long getId() {
-		return id;
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "division_id")
+	private Board board;
+
+	public int getDivisionId() {
+		return divisionId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setDivisionId(int divisionId) {
+		this.divisionId = divisionId;
 	}
 
 	public String getName() {
@@ -62,36 +64,12 @@ public class ActionItem {
 		this.name = name;
 	}
 
-	public String getContent() {
-		return content;
+	public String getUseYn() {
+		return useYn;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
-	}
-
-	public Date getStartDate() {
-		return startDate;
-	}
-
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
-	}
-
-	public Date getEndDate() {
-		return endDate;
-	}
-
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
-	}
-
-	public String getState() {
-		return state;
-	}
-
-	public void setState(String state) {
-		this.state = state;
+	public void setUseYn(String useYn) {
+		this.useYn = useYn;
 	}
 
 	public LocalDateTime getCreateDate() {
@@ -124,5 +102,13 @@ public class ActionItem {
 
 	public void setUpdater(String updater) {
 		this.updater = updater;
+	}
+
+	public Board getBoard() {
+		return board;
+	}
+
+	public void setBoard(Board board) {
+		this.board = board;
 	}
 }

@@ -26,7 +26,8 @@ public class Meeting {
 	
 	@Id
 	@GeneratedValue
-	private Long id;
+	@Column(name = "meeting_id")
+	private Long meetingId;
 	
 	@Column(length = 500)
 	private String title;
@@ -62,4 +63,100 @@ public class Meeting {
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "meeting_id")
 	private List<MeetingPerson> meetingPersons;
+
+	public Long getMeetingId() {
+		return meetingId;
+	}
+
+	public void setMeetingId(Long meetingId) {
+		this.meetingId = meetingId;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getOrganiser() {
+		return organiser;
+	}
+
+	public void setOrganiser(String organiser) {
+		this.organiser = organiser;
+	}
+
+	public Date getMeetingDay() {
+		return meetingDay;
+	}
+
+	public void setMeetingDay(Date meetingDay) {
+		this.meetingDay = meetingDay;
+	}
+
+	public LocalDateTime getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(LocalDateTime startTime) {
+		this.startTime = startTime;
+	}
+
+	public LocalDateTime getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(LocalDateTime endTime) {
+		this.endTime = endTime;
+	}
+
+	public LocalDateTime getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(LocalDateTime createDate) {
+		this.createDate = createDate;
+	}
+
+	public String getCreater() {
+		return creater;
+	}
+
+	public void setCreater(String creater) {
+		this.creater = creater;
+	}
+
+	public LocalDateTime getUpdateDate() {
+		return updateDate;
+	}
+
+	public void setUpdateDate(LocalDateTime updateDate) {
+		this.updateDate = updateDate;
+	}
+
+	public String getUpdater() {
+		return updater;
+	}
+
+	public void setUpdater(String updater) {
+		this.updater = updater;
+	}
+
+	public MeetingRoom getMeetingRoom() {
+		return meetingRoom;
+	}
+
+	public void setMeetingRoom(MeetingRoom meetingRoom) {
+		this.meetingRoom = meetingRoom;
+	}
+
+	public List<MeetingPerson> getMeetingPersons() {
+		return meetingPersons;
+	}
+
+	public void setMeetingPersons(List<MeetingPerson> meetingPersons) {
+		this.meetingPersons = meetingPersons;
+	}
 }

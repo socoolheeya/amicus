@@ -1,39 +1,40 @@
-package com.amicus.range.model;
+package com.amicus.wbs.model;
 
 import java.time.LocalDateTime;
-import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
- * 액션아이템
+ * WBS방법론
  * @author socoolheeya
- * @since 2018.08.13
+ * @since 2018.08.14
  */
 @Entity
-@Table(name = "t_actionitem")
-public class ActionItem {
-	
+@Table(name = "t_method_wbs")
+public class MethodWbs {
+
 	@Id
 	@GeneratedValue
-	private Long id;
-	
+	private Long methodId;
+
+	@Column(length = 1000)
 	private String name;
-	
-	private String content;
-	
-	@Column(name = "startdt")
-	private Date startDate;
-	
-	@Column(name = "enddt")
-	private Date endDate;
-	
-	private String state;
-	
+
+	@Column(length = 4000)
+	private String description;
+
+	@Column(name = "use_yn", length = 1)
+	private String useYn;
+
 	@Column(name = "createdt")
 	private LocalDateTime createDate;
 
@@ -46,12 +47,16 @@ public class ActionItem {
 	@Column(length = 50)
 	private String updater;
 
-	public Long getId() {
-		return id;
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "method_id")
+	private List<StandardWbs> standardWbss;
+
+	public Long getMethodId() {
+		return methodId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setMethodId(Long methodId) {
+		this.methodId = methodId;
 	}
 
 	public String getName() {
@@ -62,36 +67,20 @@ public class ActionItem {
 		this.name = name;
 	}
 
-	public String getContent() {
-		return content;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	public Date getStartDate() {
-		return startDate;
+	public String getUseYn() {
+		return useYn;
 	}
 
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
-	}
-
-	public Date getEndDate() {
-		return endDate;
-	}
-
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
-	}
-
-	public String getState() {
-		return state;
-	}
-
-	public void setState(String state) {
-		this.state = state;
+	public void setUseYn(String useYn) {
+		this.useYn = useYn;
 	}
 
 	public LocalDateTime getCreateDate() {
