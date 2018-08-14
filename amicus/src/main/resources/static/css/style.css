@@ -1,0 +1,16 @@
+@charset "UTF-8";
+html, body {
+	padding: 0;
+	margin: 0;
+}
+body {
+	font-family: 'Roboto', sans-serif;
+}
+table, tr, th, td {
+	border: 1px solid #DDD;
+}
+
+.wrapper {
+	width: 1160px;
+}
+

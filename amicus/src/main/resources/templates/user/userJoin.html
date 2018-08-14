@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>AMICUS::</title>
+<style type="text/css">
+	table, tr, th, td {
+		border: 1px solid #DDD;
+	}
+	tr
+</style>
+</head>
+<body>
+	<div>가입 페이지 입니다.</div>
+	<form action="/userJoin" method="post"> 
+		<table>
+			<colgroup>
+				<col width="10%" />
+				<col width="10%" />
+				<col width="10%" />
+				<col width="10%" />
+				<col width="10%" />
+			</colgroup>
+			<thead>
+				<tr>
+					<th>NO</th>
+					<th>EMAIL</th>
+					<th>PASSWORD</th>
+					<th>NAME</th>
+					<th>BIRTHDAY</th>
+					<th>ROLE</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td></td>
+					<td><input type="text" name="email" /></td>
+					<td><input type="password" name="password" /></td>
+					<td><input type="text" name="name" /></td>
+					<td><input type="text" name="birthday" /></td>
+					<td><input type="text" name="role" /></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+		<input type="submit" value="전송"/>
+	</form>
+	<div id="test">sdfsdfsdf</div>
+</body>
+</html>

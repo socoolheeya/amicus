@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>AMICUS::</title>
+<style type="text/css">
+	table, tr, th, td {
+		border: 1px solid #DDD;
+	}
+	tr
+</style>
+</head>
+<body>
+	<div>사용자 수정 페이지 입니다.</div>
+	<form th:action="@{/userSave}" th:object="${user}" method="post">
+		<table>
+			<colgroup>
+				<col width="10%" />
+				<col width="10%" />
+				<col width="10%" />
+				<col width="10%" />
+				<col width="10%" />
+			</colgroup>
+			<thead>
+				<tr>
+					<th>NO</th>
+					<th>EMAIL</th>
+					<th>PASSWORD</th>
+					<th>NAME</th>
+					<th>BIRTHDAY</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td th:text="1" >1</td>
+					<td>
+						<input type="text" th:field="*{email}" th:value="${user.email}" />
+					</td>
+					<td>
+						<input type="text" th:field="*{password}" th:value="${user.password}" />
+					</td>
+					<td>
+						<input type="text" th:field="*{name}" th:value="${user.name}" />
+					</td>
+					<td>
+						<input type="text" th:field="*{birthday}" th:value="${user.birthday}" />
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<input type="submit" th:value="확인" />
+		<input type="button" th:value="뒤로가기" onclick="javascript:window.history.back()" />
+	</form>
+	<div id="test">sdfsdfsdf</div>
+</body>
+</html>

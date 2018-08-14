@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorator="layouts/default">
+<head>
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>사용자 목록</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<div>사용자관리 페이지 입니다.</div>
+		<table>
+			<colgroup>
+				<col width="10%" />
+				<col width="10%" />
+				<col width="10%" />
+				<col width="10%" />
+				<col width="10%" />
+			</colgroup>
+			<thead>
+				<tr>
+					<th>NO</th>
+					<th>EMAIL</th>
+					<th>PASSWORD</th>
+					<th>NAME</th>
+					<th>BIRTHDAY</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="user,iter : ${userList}">
+					<td th:text="${iter.index} + 1" >sdf</td>
+					<td>
+						<a th:href="@{'/userEdit/' + ${user.email}}" th:text="${user.email}"></a>
+					</td>
+					<td th:text="${user.password}">443</td>
+					<td th:text="${user.name}">hd</td>
+					<td th:text="${user.birthday}">dg</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
