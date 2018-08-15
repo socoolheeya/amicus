@@ -26,7 +26,7 @@ public class Project {
 
 	@Id
 	@GeneratedValue
-	private Long id;
+	private long id;
 
 	@Column(length = 1000, nullable = false)
 	private String name;
@@ -68,21 +68,21 @@ public class Project {
 	@JoinColumn(name = "project_id")
 	private List<SubProject> subProjects;
 	
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "project_id")
 	private List<Requirement> Requirements;
 	
 	public Project() {}
 	
-	public Project(Long id) {
+	public Project(long id) {
 		this.id = id;
 	}
 
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

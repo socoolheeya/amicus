@@ -19,7 +19,7 @@ public class Request {
 	
 	@Id
 	@GeneratedValue
-	private Long id;
+	private long id;
 	
 	@Column(length = 200, nullable = false)
 	private String name;
@@ -51,11 +51,11 @@ public class Request {
 	@Column(length = 100)
 	private String updater;
 
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

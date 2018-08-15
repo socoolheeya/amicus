@@ -27,13 +27,13 @@ public class SubProject {
 
 	@Id
 	@GeneratedValue
-	private Long id;
+	private long id;
 
 	@Column(length = 1000, nullable = false)
 	private String name;
 
 	@Column(name = "project_id")
-	private Long projectId;
+	private long projectId;
 
 	@Column(name = "startdt")
 	private LocalDateTime startDate;
@@ -71,16 +71,16 @@ public class SubProject {
 	
 	public SubProject() {}
 	
-	public SubProject(Long id, Long projectId) {
+	public SubProject(long id, long projectId) {
 		this.id = id;
 		this.projectId = projectId;
 	}
 
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -92,11 +92,11 @@ public class SubProject {
 		this.name = name;
 	}
 
-	public Long getProjectId() {
+	public long getProjectId() {
 		return projectId;
 	}
 
-	public void setProjectId(Long projectId) {
+	public void setProjectId(long projectId) {
 		this.projectId = projectId;
 	}
 

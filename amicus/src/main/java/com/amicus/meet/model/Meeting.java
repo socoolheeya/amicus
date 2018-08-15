@@ -27,7 +27,7 @@ public class Meeting {
 	@Id
 	@GeneratedValue
 	@Column(name = "meeting_id")
-	private Long meetingId;
+	private long meetingId;
 	
 	@Column(length = 500)
 	private String title;
@@ -56,19 +56,19 @@ public class Meeting {
 	@Column(length = 50)
 	private String updater;
 	
-	@OneToOne
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "room_id")
 	private MeetingRoom meetingRoom;
 	
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "meeting_id")
 	private List<MeetingPerson> meetingPersons;
 
-	public Long getMeetingId() {
+	public long getMeetingId() {
 		return meetingId;
 	}
 
-	public void setMeetingId(Long meetingId) {
+	public void setMeetingId(long meetingId) {
 		this.meetingId = meetingId;
 	}
 

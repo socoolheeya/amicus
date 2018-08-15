@@ -25,13 +25,13 @@ public class Wbs {
 	@Id
 	@GeneratedValue
 	@Column(name = "wbs_id")
-	private Long wbsid;
+	private long wbsid;
 
 	@Column(name = "wbs_name",length = 500, nullable = false)
 	private String wbsName;
 
 	@Column(name = "upper_id")
-	private Long upperId;
+	private long upperId;
 
 	/**
 	 * 구분: 단계(1), 활동(2), 공정(3)
@@ -79,11 +79,11 @@ public class Wbs {
 	@JoinColumn(name = "wbs_id")
 	private OutputFile outputfiles;
 
-	public Long getWbsid() {
+	public long getWbsid() {
 		return wbsid;
 	}
 
-	public void setWbsid(Long wbsid) {
+	public void setWbsid(long wbsid) {
 		this.wbsid = wbsid;
 	}
 
@@ -95,11 +95,11 @@ public class Wbs {
 		this.wbsName = wbsName;
 	}
 
-	public Long getUpperId() {
+	public long getUpperId() {
 		return upperId;
 	}
 
-	public void setUpperId(Long upperId) {
+	public void setUpperId(long upperId) {
 		this.upperId = upperId;
 	}
 

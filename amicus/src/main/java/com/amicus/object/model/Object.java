@@ -19,12 +19,12 @@ import javax.persistence.Table;
 public class Object {
 
 	@Id
-	@Column(name = "wbs_id")
-	private Long wbsId;
-	
-	@Id
 	@GeneratedValue
-	private Long id;
+	@Column(name = "object_id")
+	private long objectId;
+	
+	@Column(name = "wbs_id")
+	private long wbsId;
 
 	@Column(name = "object_name", length = 100)
 	private String objectNmae;
@@ -47,7 +47,7 @@ public class Object {
 	@Column(name = "perform_startdt")
 	private Date performStartDate;
 	
-	@Column(name = "perform_startdt")
+	@Column(name = "perform_enddt")
 	private Date performEndDate;
 	
 	private double progress;
@@ -92,21 +92,21 @@ public class Object {
 
 	@Column(length = 50)
 	private String updater;
+	
+	public long getObjectId() {
+		return objectId;
+	}
 
-	public Long getWbsId() {
+	public void setObjectId(long objectId) {
+		this.objectId = objectId;
+	}
+
+	public long getWbsId() {
 		return wbsId;
 	}
 
-	public void setWbsId(Long wbsId) {
+	public void setWbsId(long wbsId) {
 		this.wbsId = wbsId;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getObjectNmae() {

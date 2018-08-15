@@ -23,7 +23,7 @@ public class Role {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
+	private long id;
 	
 	@Column(nullable = false, length = 100)
 	private String name;
@@ -37,22 +37,22 @@ public class Role {
 		this.name = name;
 	}
 	
-	public Role(Long id, String name) {
+	public Role(long id, String name) {
 		this.id = id;
 		this.name = name;
 	}
 	
-	public Role(Long id, String name, List<User> users) {
+	public Role(long id, String name, List<User> users) {
 		this.id = id;
 		this.name = name;
 		this.users = users;
 	}
 	
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	

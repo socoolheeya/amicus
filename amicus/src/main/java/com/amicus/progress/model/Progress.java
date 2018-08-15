@@ -18,7 +18,7 @@ public class Progress {
 	
 	@Id
 	@Column(name = "wbs_id")
-	private Long wbsId;
+	private long wbsId;
 	
 	@Column(name = "plan_rate")
 	private double planRate;

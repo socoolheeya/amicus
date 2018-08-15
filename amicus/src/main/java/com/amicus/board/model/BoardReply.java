@@ -19,6 +19,7 @@ public class BoardReply {
 	
 	@Id
 	@GeneratedValue
+	@Column(name = "reply_id")
 	private Long replyId;
 	
 	@Column(name = "board_id")

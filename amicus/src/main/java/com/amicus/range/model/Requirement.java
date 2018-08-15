@@ -26,10 +26,10 @@ public class Requirement {
 	private String description;
 	
 	@Column(name = "project_id")
-	private Long projectId;
+	private long projectId;
 	
 	@Column(name = "subproject_id")
-	private Long subProjectId;
+	private long subProjectId;
 	
 	private LocalDateTime createdt;
 	
@@ -65,19 +65,19 @@ public class Requirement {
 		this.description = description;
 	}
 
-	public Long getProjectId() {
+	public long getProjectId() {
 		return projectId;
 	}
 
-	public void setProjectId(Long projectId) {
+	public void setProjectId(long projectId) {
 		this.projectId = projectId;
 	}
 
-	public Long getSubProjectId() {
+	public long getSubProjectId() {
 		return subProjectId;
 	}
 
-	public void setSubProjectId(Long subProjectId) {
+	public void setSubProjectId(long subProjectId) {
 		this.subProjectId = subProjectId;
 	}
 

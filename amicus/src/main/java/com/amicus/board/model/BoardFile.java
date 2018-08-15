@@ -20,10 +20,10 @@ public class BoardFile {
 	@Id
 	@GeneratedValue
 	@Column(name = "file_id")
-	private Long fileId;
+	private long fileId;
 	
 	@Column(name = "board_id")
-	private Long boardId;
+	private long boardId;
 	
 	@Column(name = "domain_url")
 	private String domainUrl;
@@ -51,19 +51,19 @@ public class BoardFile {
 	@Column(length = 50)
 	private String updater;
 
-	public Long getFileId() {
+	public long getFileId() {
 		return fileId;
 	}
 
-	public void setFileId(Long fileId) {
+	public void setFileId(long fileId) {
 		this.fileId = fileId;
 	}
 
-	public Long getBoardId() {
+	public long getBoardId() {
 		return boardId;
 	}
 
-	public void setBoardId(Long boardId) {
+	public void setBoardId(long boardId) {
 		this.boardId = boardId;
 	}
 

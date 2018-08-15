@@ -15,10 +15,10 @@ public class OutputFile {
 	@Id
 	@GeneratedValue
 	@Column(name = "file_id")
-	private Long fileId;
+	private long fileId;
 
 	@Column(name = "wbs_id", nullable = false)
-	private Long wbsId;
+	private long wbsId;
 
 	@Column(name = "file_name", length = 2000, nullable = false)
 	private String fileName;
@@ -43,19 +43,19 @@ public class OutputFile {
 	@Column(name = "updatedt")
 	private LocalDateTime updateDate;
 
-	public Long getFileId() {
+	public long getFileId() {
 		return fileId;
 	}
 
-	public void setFileid(Long fileId) {
+	public void setFileid(long fileId) {
 		this.fileId = fileId;
 	}
 
-	public Long getWbsId() {
+	public long getWbsId() {
 		return wbsId;
 	}
 
-	public void setWbsid(Long wbsId) {
+	public void setWbsid(long wbsId) {
 		this.wbsId = wbsId;
 	}
 

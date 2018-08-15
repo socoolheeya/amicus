@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
@@ -15,8 +16,9 @@ import javax.persistence.Table;
 @Table(name = "t_meeting_person")
 public class MeetingPerson {
 	
+	@Id
 	@Column(name = "meeting_id")
-	private int meetingId;
+	private long meetingId;
 	
 	@Column(length = 50)
 	private String participant;
@@ -39,11 +41,11 @@ public class MeetingPerson {
 	@Column(length = 50)
 	private String updater;
 
-	public int getMeetingId() {
+	public long getMeetingId() {
 		return meetingId;
 	}
 
-	public void setMeetingId(int meetingId) {
+	public void setMeetingId(long meetingId) {
 		this.meetingId = meetingId;
 	}
 

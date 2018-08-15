@@ -26,7 +26,7 @@ public class Error {
 	@Id
 	@GeneratedValue
 	@Column(name = "error_id")
-	private Long errorId;
+	private long errorId;
 
 	@Column(length = 200)
 	private String name;
@@ -71,11 +71,11 @@ public class Error {
 	@JoinColumn(name = "error_id")
 	private List<ErrorHistory> errorHistories;
 
-	public Long getErrorId() {
+	public long getErrorId() {
 		return errorId;
 	}
 
-	public void setErrorId(Long errorId) {
+	public void setErrorId(long errorId) {
 		this.errorId = errorId;
 	}
 

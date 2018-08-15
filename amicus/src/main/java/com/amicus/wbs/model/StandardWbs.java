@@ -21,10 +21,10 @@ public class StandardWbs {
 	@Id
 	@GeneratedValue
 	@Column(name = "wbs_id")
-	private Long wbsId;
+	private long wbsId;
 	
 	@Column(name = "method_id")
-	private Long methodId;
+	private long methodId;
 	
 	@Column(length = 500, nullable = false)
 	private String name;
@@ -65,19 +65,19 @@ public class StandardWbs {
 	@Column(length = 50)
 	private String updater;
 
-	public Long getWbsId() {
+	public long getWbsId() {
 		return wbsId;
 	}
 
-	public void setWbsId(Long wbsId) {
+	public void setWbsId(long wbsId) {
 		this.wbsId = wbsId;
 	}
 
-	public Long getMethodId() {
+	public long getMethodId() {
 		return methodId;
 	}
 
-	public void setMethodId(Long methodId) {
+	public void setMethodId(long methodId) {
 		this.methodId = methodId;
 	}
 

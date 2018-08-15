@@ -21,10 +21,10 @@ public class ErrorHistory {
 	@Id
 	@GeneratedValue
 	@Column(name = "error_hist_id")
-	private Long errorHistId;
+	private long errorHistId;
 	
 	@Column(name = "error_id")
-	private Long error_id;
+	private long errorId;
 	
 	@Column(length = 200)
 	private String name;
@@ -62,20 +62,20 @@ public class ErrorHistory {
 	@Column(length = 50)
 	private String updater;
 
-	public Long getErrorHistId() {
+	public long getErrorHistId() {
 		return errorHistId;
 	}
 
-	public void setErrorHistId(Long errorHistId) {
+	public void setErrorHistId(long errorHistId) {
 		this.errorHistId = errorHistId;
 	}
 
-	public Long getError_id() {
-		return error_id;
+	public long getErrorId() {
+		return errorId;
 	}
 
-	public void setError_id(Long error_id) {
-		this.error_id = error_id;
+	public void setErrorId(long errorId) {
+		this.errorId = errorId;
 	}
 
 	public String getName() {

@@ -24,7 +24,7 @@ public class MethodWbs {
 
 	@Id
 	@GeneratedValue
-	private Long methodId;
+	private long methodId;
 
 	@Column(length = 1000)
 	private String name;
@@ -51,11 +51,11 @@ public class MethodWbs {
 	@JoinColumn(name = "method_id")
 	private List<StandardWbs> standardWbss;
 
-	public Long getMethodId() {
+	public long getMethodId() {
 		return methodId;
 	}
 
-	public void setMethodId(Long methodId) {
+	public void setMethodId(long methodId) {
 		this.methodId = methodId;
 	}
 

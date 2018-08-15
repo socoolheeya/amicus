@@ -18,7 +18,7 @@ import javax.persistence.Table;
 public class ApprovalLine {
 	
 	@Id
-	private Long id;
+	private long id;
 	
 	/**
 	 * 결재역할: 기안자(1), 승인자(2)

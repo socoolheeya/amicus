@@ -17,6 +17,8 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
+import com.amicus.util.enums.UserRole;
+
 /**
  * 사용자
  * @author socoolheeya
@@ -48,6 +50,8 @@ public class User {
 	
 	@Column(length = 50)
 	private String grade;
+	
+	public enum USER_TYPE {SUPER, ADMIN, USER};
 	
 	private LocalDateTime createdt;
 	

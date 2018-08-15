@@ -24,7 +24,7 @@ public class Approval {
 
 	@Id
 	@GeneratedValue
-	private Long id;
+	private long id;
 
 	@NotNull
 	@Column(length = 1000)
@@ -42,4 +42,44 @@ public class Approval {
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "id")
 	private List<ApprovalLine> approvalLines;
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public List<ApprovalLine> getApprovalLines() {
+		return approvalLines;
+	}
+
+	public void setApprovalLines(List<ApprovalLine> approvalLines) {
+		this.approvalLines = approvalLines;
+	}
 }

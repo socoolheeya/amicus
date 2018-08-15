@@ -25,10 +25,10 @@ public class Board {
 	@Id
 	@GeneratedValue
 	@Column(name = "board_id")
-	private Long boardId;
+	private long boardId;
 	
 	@Column(name = "upper_board_id")
-	private Long upperBoardId;
+	private long upperBoardId;
 
 	@Column(length = 500)
 	private String title;
@@ -37,7 +37,7 @@ public class Board {
 	private String content;
 	
 	@Column(name = "division_id")
-	private Long divisionId;
+	private long divisionId;
 	
 	@Column(name = "createdt")
 	private LocalDateTime createDate;
@@ -55,7 +55,7 @@ public class Board {
 	@JoinColumn(name = "board_id")
 	private List<BoardReply> boardReplies;
 	
-	@OneToMany(fetch=FetchType.EAGER, cascade= CascadeType.ALL)
+	@OneToMany(fetch=FetchType.LAZY, cascade= CascadeType.ALL)
 	@JoinColumn(name = "board_id")
 	private List<BoardFile> boardFiles;
 	
