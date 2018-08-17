@@ -7,9 +7,11 @@ package com.amicus.util.enums;
  */
 public enum ApprovalState {
 	
+	REGIST("기안", 1),
 	ONGOING("진행중", 1),
-	END("종료", 2),
-	REJECT("반려", 3);
+	APPROVED("승인", 2),
+	RETURN("반려", 3),
+	CANCEL("취소", 4);
 	
 	private String name;
 	private int value;
