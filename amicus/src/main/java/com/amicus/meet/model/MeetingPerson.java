@@ -9,26 +9,24 @@ import javax.persistence.Table;
 
 /**
  * 회의 참여자
+ * 
  * @author socoolheeya
  * @since 2018.08.13
  */
 @Entity
 @Table(name = "t_meeting_person")
 public class MeetingPerson {
-	
+
 	@Id
-	@Column(name = "meeting_id")
-	private long meetingId;
-	
-	@Column(length = 50)
-	private String participant;
-	
+	@Column(name = "participant_id", unique = true)
+	private long participantId;
+
 	@Column(length = 30)
 	private String grade;
-	
+
 	@Column(length = 100)
 	private String team;
-	
+
 	@Column(name = "createdt")
 	private LocalDateTime createDate;
 
@@ -41,22 +39,14 @@ public class MeetingPerson {
 	@Column(length = 50)
 	private String updater;
 
-	public long getMeetingId() {
-		return meetingId;
+	public long getParticipantId() {
+		return participantId;
 	}
 
-	public void setMeetingId(long meetingId) {
-		this.meetingId = meetingId;
+	public void setParticipantId(long participantId) {
+		this.participantId = participantId;
 	}
 
-	public String getParticipant() {
-		return participant;
-	}
-
-	public void setParticipant(String participant) {
-		this.participant = participant;
-	}
-	
 	public String getGrade() {
 		return grade;
 	}

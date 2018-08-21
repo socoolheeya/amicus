@@ -61,7 +61,7 @@ public class Meeting {
 	private MeetingRoom meetingRoom;
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "meeting_id")
+	@JoinColumn(name = "participant_id")
 	private List<MeetingPerson> meetingPersons;
 
 	public long getMeetingId() {
