@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+.layout {
+	display: inline;	
+}
+.layout-item-1 {
+	flex: 1;
+	align-items: stretch;
+}
+.layout-item-11 {
+	flex: 11;
+	align-items: stretch;
+}
