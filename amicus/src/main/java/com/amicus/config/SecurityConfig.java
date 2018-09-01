@@ -12,6 +12,7 @@ import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationProvider;
 import org.springframework.security.web.authentication.preauth.PreAuthenticatedGrantedAuthoritiesUserDetailsService;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
@@ -26,7 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	public BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
-
+	
 	@Bean
 	public AuthenticationManager providerManager() {
 		PreAuthenticatedAuthenticationProvider preAuthProvider = new PreAuthenticatedAuthenticationProvider();
@@ -36,6 +37,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		List<AuthenticationProvider> providers = new ArrayList<AuthenticationProvider>();
 		providers.add(preAuthProvider);
 		return new ProviderManager(providers);
+	}
+	
+	@Bean
+	public AuthenticationSuccessHandler successHandler() {
+		return new CustomLoginSuccessHandler("/");
 	}
 
 	@Override
@@ -47,7 +53,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.formLogin().loginPage("/login")
 			.usernameParameter("email")
 			.passwordParameter("password")
-			.defaultSuccessUrl("/main.do", true)
+			.defaultSuccessUrl("/main", true)
 			.permitAll()
 			.and()
 			.logout()
