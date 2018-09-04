@@ -60,13 +60,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.invalidateHttpSession(true).clearAuthentication(true)
 			.logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login?logout").permitAll()
 			.and().exceptionHandling().accessDeniedHandler(accessDeniedHandler);
+		
+		http.sessionManagement()
+			.invalidSessionUrl("/login")
+			.maximumSessions(1)
+			.maxSessionsPreventsLogin(true)
+			.expiredUrl("/login");
+		
 	}
-
-	/*@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication().withUser("lwh0102@naver.com").password("1234").roles("SUPER")
-			.and()
-			.withUser("lwh0102@naver.com").password("1234").roles("USER");
-	}*/
-
 }
