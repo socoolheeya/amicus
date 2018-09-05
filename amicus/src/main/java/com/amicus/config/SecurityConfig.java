@@ -11,8 +11,8 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationProvider;
 import org.springframework.security.web.authentication.preauth.PreAuthenticatedGrantedAuthoritiesUserDetailsService;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
@@ -40,8 +40,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 	
 	@Bean
-	public AuthenticationSuccessHandler successHandler() {
-		return new CustomLoginSuccessHandler("/");
+	public CustomLoginSuccessHandler successHandler() {
+		return new CustomLoginSuccessHandler();
 	}
 
 	@Override
@@ -50,9 +50,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/user/**").hasRole("USER")
 			.anyRequest().authenticated()
 			.and()
-			.formLogin().loginPage("/login")
+			.formLogin()
+			.loginPage("/login")
 			.usernameParameter("email")
 			.passwordParameter("password")
+			.successHandler(successHandler())
 			.defaultSuccessUrl("/main", true)
 			.permitAll()
 			.and()
@@ -62,6 +64,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.and().exceptionHandling().accessDeniedHandler(accessDeniedHandler);
 		
 		http.sessionManagement()
+			.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
 			.invalidSessionUrl("/login")
 			.maximumSessions(1)
 			.maxSessionsPreventsLogin(true)
