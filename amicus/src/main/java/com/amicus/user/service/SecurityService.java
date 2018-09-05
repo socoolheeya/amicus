@@ -39,13 +39,12 @@ public class SecurityService {
 	public void autologin(User user, HttpSession session) {
 		UserDetails userDetails = userService.loadUserByUsername(user.getEmail());
 		Authentication request = new UsernamePasswordAuthenticationToken(userDetails, user.getPassword(), userDetails.getAuthorities());
-
-		providerManager.authenticate(request);
-
 		if (request.isAuthenticated()) {
 			SecurityContextHolder.getContext().setAuthentication(request);
 			log.debug(String.format("Auto login %s successfully!", user.getEmail()));
 			userService.setSession(user, session);
 		}
+		providerManager.authenticate(request);
+
 	}
 }

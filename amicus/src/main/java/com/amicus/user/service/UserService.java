@@ -6,6 +6,8 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -21,6 +23,8 @@ import com.amicus.user.repository.UserRepository;
 
 @Service
 public class UserService implements UserDetailsService {
+	
+	private Logger log = LoggerFactory.getLogger(getClass());
 	
 	@Autowired
 	private UserRepository userRepository;
@@ -40,9 +44,7 @@ public class UserService implements UserDetailsService {
 			authority = new SimpleGrantedAuthority(role.getName());
 			list.add(authority);
 		}
-		
 		UserDetails detail = new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), list);
-		
 		return detail;
 	}
 
@@ -69,6 +71,7 @@ public class UserService implements UserDetailsService {
 	
 	public void setSession(User user, HttpSession session) {
 		User dbUser = getUser(user.getEmail());
+		log.debug("dbUser : "  + dbUser.toString());
 		int i = 1;
 		for(Role role: dbUser.getRoles()) {
 			i++;
