@@ -34,7 +34,7 @@ public class Approval {
 	private String type;
  
 	/**
-	 * 결재종류: 진행중(1), 완료(2), 반려(3)
+	 * @see enum ApprovalState
 	 */
 	@Column(length = 1)
 	private String state;
