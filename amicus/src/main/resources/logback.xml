@@ -20,13 +20,16 @@
 		</rollingPolicy>
 	</appender>
 
+	
 	<logger name="com.amicus" level="debug" additivity="false">
 		<appender-ref ref="ROLLING" />
 	</logger>
-	<logger name="com.amicus" additivity="true" />
+	<logger name="org.springframework" level="info" additivity="true" />
 	<logger name="org.springframework.web" level="info" additivity="true" />
 	<logger name="org.springframework.security" level="info" additivity="true" />
-		<logger name="java.sql" level="info" additivity="true" />
+	<logger name="org.hibernate.type" level="all" />
+	<logger name="org.hibernate" level="debug" />
+	<logger name="java.sql" level="info" additivity="true" />
 	<root level="info">
 		<appender-ref ref="STDOUT" />
 	</root>
