@@ -11,7 +11,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.stereotype.Component;
 
+@Component
 public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 
 	@Override
@@ -26,9 +28,6 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 	 
 		response.setStatus(HttpServletResponse.SC_OK);
 		response.sendRedirect("/");
-		
-		
-		
 		
 	}
 }
