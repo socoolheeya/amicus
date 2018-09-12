@@ -23,6 +23,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private LoggingAccessDeniedHandler accessDeniedHandler;
 	
+	@Autowired
+	private CustomLoginSuccessHandler customLoginSuccessHandler;
+	
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
@@ -39,31 +42,38 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		return new ProviderManager(providers);
 	}
 	
-	@Bean
-	public CustomLoginSuccessHandler successHandler() {
-		return new CustomLoginSuccessHandler();
-	}
-
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/bootstrap/**", "/css/**", "/js/**", "/userJoin", "/forgot").permitAll()
-			.antMatchers("/user/**").hasRole("USER")
-			.anyRequest().authenticated()
+		http.authorizeRequests()
+			.antMatchers("/bootstrap/**", "/css/**", "/js/**", "/login", "/login-error", "/forgot").permitAll()	
+			.antMatchers("/user/**").access("ROLE_USER")
+			.antMatchers("/admin/**").access("ROLE_ADMIN")
+			.antMatchers("/**").authenticated()
+			
 			.and()
 			.formLogin()
 			.loginPage("/login")
+			.loginProcessingUrl("/loginProc")
+			.failureUrl("/login?error")
+			.successHandler(customLoginSuccessHandler)
+			.defaultSuccessUrl("/main", true)
 			.usernameParameter("email")
 			.passwordParameter("password")
-			.successHandler(successHandler())
-			.defaultSuccessUrl("/main", true)
-			.permitAll()
+			
 			.and()
 			.logout()
+			.deleteCookies("JSESSIONID")
 			.invalidateHttpSession(true).clearAuthentication(true)
-			.logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login?logout").permitAll()
-			.and().exceptionHandling().accessDeniedHandler(accessDeniedHandler);
+			.logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/")
 		
-		http.sessionManagement()
+			.and()
+			.rememberMe().rememberMeParameter("remember-me").key("unique").tokenValiditySeconds(86400)
+		
+			.and()
+			.exceptionHandling().accessDeniedHandler(accessDeniedHandler)
+		
+			.and()
+			.sessionManagement()
 			.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
 			.invalidSessionUrl("/login")
 			.maximumSessions(1)
