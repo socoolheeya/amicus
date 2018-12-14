@@ -1,9 +1,65 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<div class="nav-container">
-	<div class="nav-channel">
-		<div>My world</div>
-		<div>이원희</div>
+	<a class="home" href="/home.do">
+	</a>
+	<div class="navbar-nav">
+		<ul class="nav nav-items flex-column">
+			<li class="item">
+				<a class="oy" th:href="@{/home}" title="" data-toggle="tooltip" data-placement="right" data-container="body" data-original-title="Overview">
+            		<span class="item-bg">
+            			<i class="fas fa-home fa-lg"></i>
+            		</span>
+            		<small class="text-box text">Overview</small>
+          		</a>
+			</li>
+			<li class="item">
+				<a class="oy" th:href="@{/home}" title="" data-toggle="tooltip" data-placement="right" data-container="body" data-original-title="Home">
+            		<span class="item-bg">
+            			<i class="fas fa-folder fa-lg"></i>
+            		</span>
+            		<small class="text-box text">Overview</small>
+          		</a>
+			</li>
+			<li class="item">
+				<a class="oy" th:href="@{/statistic}" title="" data-toggle="tooltip" data-placement="right" data-container="body" data-original-title="Statistic">
+            		<span class="item-bg">
+            			<i class="fas fa-chart-bar fa-lg"></i>
+            		</span>
+            		<small class="text-box text">Overview</small>
+          		</a>
+			</li>
+			<li class="item">
+				<a class="oy" href="../index.html" title="" data-toggle="tooltip" data-placement="right" data-container="body" data-original-title="Overview">
+            		<span class="item-bg">
+            			<i class="fas fa-tasks fa-lg"></i>
+            		</span>
+            		<small class="text-box text">Overview</small>
+          		</a>
+			</li>
+			<li class="item">
+				<a class="oy" href="../index.html" title="" data-toggle="tooltip" data-placement="right" data-container="body" data-original-title="Overview">
+            		<span class="item-bg">
+            			<i class="fas fa-home fa-lg"></i>
+            		</span>
+            		<small class="text-box text">Overview</small>
+          		</a>
+			</li>
+			<li class="item">
+				<a class="oy" th:href="@{/calendar}" title="" data-toggle="tooltip" data-placement="right" data-container="body" data-original-title="Calendar">
+            		<span class="item-bg">
+            			<i class="fas fa-calendar-alt fa-lg"></i>
+            		</span>
+            		<small class="text-box text">Canlendar</small>
+          		</a>
+			</li>
+			<li class="item">
+				<a class="oy" th:href="@{/logout}" title="" data-toggle="tooltip" data-placement="right" data-container="body" data-original-title="Logout">
+            		<span class="item-bg">
+            			<i class="fas fa-power-off fa-lg"></i>
+            		</span>
+            		<small class="text-box text">Logout</small>
+          		</a>
+			</li>
+		</ul>
 	</div>
-</div>
 </html>

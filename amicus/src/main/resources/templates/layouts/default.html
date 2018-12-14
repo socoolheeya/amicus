@@ -9,12 +9,16 @@
 	<th:block th:replace="fragments/css"></th:block>
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
-<body>
-	<nav class="nav" th:replace="fragments/left"></nav>
-	<header class="header" th:replace="fragments/header"></header>
-	<div class="wrapper" layout:fragment="content">
-		<h1>Hello from layout</h1>
-		<h1>Here is default.html</h1>
+<body class="bg-dark">
+	<div class="layout">
+		<div class="left-nav-wrapper layout-inline">
+			<nav class="nav" th:replace="fragments/left"></nav>
+		</div>
+		<div class="right-wrapper layout-inline">
+			<header class="header" th:replace="fragments/header"></header>
+			<div class="wrapper" layout:fragment="content">
+			</div>
+		</div>
 	</div>
 	
 	<footer class="footer" th:replace="fragments/footer"></footer>

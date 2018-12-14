@@ -19,7 +19,7 @@
 	            <p id="profile-name" class="profile-name-card"></p>
 	            <form class="form-signin" th:action="@{/forgot}" method="post">
 	                <span id="reauth-email" class="reauth-email"></span>
-	                <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required autofocus />
+	                <input type="email" id="email" name="email" class="form-control" placeholder="Email address" required autofocus />
 	                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">비밀번호 찾기</button>
 	            </form>
 	            <a th:href="@{/login}" class="forgot-password">로그인으로 돌아가기</a>

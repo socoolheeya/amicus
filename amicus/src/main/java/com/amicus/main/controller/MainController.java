@@ -1,5 +1,6 @@
 package com.amicus.main.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -20,7 +21,7 @@ import com.amicus.user.service.UserService;
 import com.amicus.util.common.EmailService;
 
 /**
- * 
+ * 메인 컨트롤러
  * @author socoolheeya
  * @since 2018.07.20
  */
@@ -42,36 +43,38 @@ public class MainController {
 	@Autowired
 	private EmailService emailService;
 	
-	@GetMapping("/main")
-	public String main(Model model) {
-		log.debug("***********************************************************************************");
-		log.debug("* " + Thread.currentThread().getStackTrace()[1].getMethodName().toString() + "() param: ");
-		log.debug("***********************************************************************************");
+	@GetMapping(value= {"/", "/main", "/home"})
+	public String main(Model model, User user) {
+		log.debug("===================================================================================");
+		log.debug("[METHDO] : " + Thread.currentThread().getStackTrace()[1].getMethodName().toString() + "()");
+		log.debug("[PARAM] : " + user.toString());
+		log.debug("===================================================================================");
 		
-		userService.getUser("lwh0102@naver.com");
-		model.addAttribute("filePath", filePath);
+		model.addAttribute("user", user);
 		
 		return "main/main";
 	}
 	
 	@GetMapping("/login")
-	public String login(Model model) {
-		log.debug("***********************************************************************************");
-		log.debug("* " + Thread.currentThread().getStackTrace()[1].getMethodName().toString() + "() GET: ");
-		log.debug("***********************************************************************************");
-		model.addAttribute("user", userService.getUser("lwh0102@naver.com"));
+	public String login(HttpServletRequest request, Model model) {
+		log.debug("===================================================================================");
+		log.debug("[METHOD] : " + Thread.currentThread().getStackTrace()[1].getMethodName().toString() + "() GET");
+		log.debug("===================================================================================");
+		
+		String referer = request.getHeader("Referer");
+		request.getSession().setAttribute("prePage", referer);
 		
 		return "main/login";
 	}
 	
-	@PostMapping(value="/login", produces="text/html")
-	public void login(Model model, @ModelAttribute User user, BindingResult error, HttpSession session) {
-		log.debug("***********************************************************************************");
-		log.debug("* " + Thread.currentThread().getStackTrace()[1].getMethodName().toString() + "() param: ");
-		log.debug("***********************************************************************************");
-		if(error.hasErrors()) {
-			
-		} else {
+	@PostMapping(value="/loginProc")
+	public void login(HttpServletRequest request, HttpSession session, Model model, @ModelAttribute User user, BindingResult error) {
+		log.debug("===================================================================================");
+		log.debug("[METHOD] : " + Thread.currentThread().getStackTrace()[1].getMethodName().toString() + "() POST");
+		log.debug("[PARAM] : " + request.getParameterMap().toString());
+		log.debug("===================================================================================");
+		
+		if(!error.hasErrors()) {
 			securityService.autologin(user, session);
 		}
 	}
@@ -88,26 +91,28 @@ public class MainController {
 	
 	@GetMapping("/forgot")
 	public String forgot(User user) {
-		log.debug("***********************************************************************************");
-		log.debug("* " + Thread.currentThread().getStackTrace()[1].getMethodName().toString() + "() param: " + user.toString());
-		log.debug("***********************************************************************************");
+		log.debug("===================================================================================");
+		log.debug("[METHOD] : " + Thread.currentThread().getStackTrace()[1].getMethodName().toString() + "()");
+		log.debug("[PARAM] : " + user.toString());
+		log.debug("===================================================================================");
 		return "main/forgot";
 	}
 	
 	@PostMapping("/forgot")
 	public void forgot(@RequestParam String email, Model model) {
-		log.debug("***********************************************************************************");
-		log.debug("* " + Thread.currentThread().getStackTrace()[1].getMethodName().toString() + "() param: " + email);
-		log.debug("***********************************************************************************");
+		log.debug("===================================================================================");
+		log.debug("[METHOD] : " + Thread.currentThread().getStackTrace()[1].getMethodName().toString() + "()");
+		log.debug("[PARAM] : " + email);
+		log.debug("===================================================================================");
 		
 		emailService.sendMessage("lwh0102@kaiem.co.kr", "테스트 제목", "내용은 없습니다.");
 	}
 	
 	@GetMapping("/access-denied")
     public String accessDenied() {
-		log.debug("***********************************************************************************");
-		log.debug("* " + Thread.currentThread().getStackTrace()[1].getMethodName().toString() + "() param: ");
-		log.debug("***********************************************************************************");
+		log.debug("===================================================================================");
+		log.debug("[METHOD]" + Thread.currentThread().getStackTrace()[1].getMethodName().toString() + "()");
+		log.debug("===================================================================================");
         return "/error/access-denied";
     }
 	

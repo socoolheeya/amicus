@@ -1,11 +1,13 @@
 package com.amicus.util.enums;
 
+import com.amicus.util.enums.mapper.EnumMapperType;
+
 /**
  * 결재상태
  * @author socoolheeya
  * @since 2018.08.17
  */
-public enum ApprovalState {
+public enum ApprovalState implements EnumMapperType {
 	
 	REGIST("기안", 1),
 	ONGOING("진행중", 1),
@@ -27,5 +29,10 @@ public enum ApprovalState {
 	
 	public int getValue() {
 		return value;
+	}
+
+	@Override
+	public int getCode() {
+		return 0;
 	}
 }

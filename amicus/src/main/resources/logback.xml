@@ -29,6 +29,7 @@
 	<logger name="org.springframework.security" level="info" additivity="true" />
 	<logger name="org.hibernate.type" level="all" />
 	<logger name="org.hibernate" level="debug" />
+	<logger name="javax.persistence" level="debug" />
 	<logger name="java.sql" level="info" additivity="true" />
 	<root level="info">
 		<appender-ref ref="STDOUT" />
